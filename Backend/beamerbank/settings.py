@@ -26,7 +26,13 @@ SECRET_KEY = 'django-insecure-7p3&djz9*y#165ckgo^k35c*em*$x!#o_g30(2*e(*ca48+3c2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '678c-102-213-93-50.ngrok-free.app',
+    '2fb9-102-213-93-50.ngrok-free.app',
+    'localhost',
+    '127.0.0.1:8000',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -152,3 +158,5 @@ AUTH_USER_MODEL = 'users.User'
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+import django_heroku
+django_heroku.settings(locals())
