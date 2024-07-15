@@ -1,0 +1,130 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bank Project">
+    <meta name="author" content="Indonez">
+    <meta name="theme-color" content="#00B276">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'img/apple-touch-icon.png' %}">
+    <title>Beamer Bank</title>
+</head>
+
+<body>
+    <div class="page-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <main>
+        <div class="uk-section uk-padding-remove-vertical">
+            <div class="uk-container uk-container-expand">
+                <div class="uk-grid" data-uk-height-viewport="expand: true">
+                    <div class="uk-width-3-5@m uk-background-cover uk-background-center-right uk-visible@m uk-box-shadow-xlarge background-image-signin">
+                        <!-- Background image section, you can add content if needed -->
+                    </div>
+                    <div class="uk-width-expand@m uk-flex uk-flex-middle">
+                        <div class="uk-grid uk-flex-center">
+                            <div class="uk-width-3-5@m">
+                                <div class="uk-text-center in-padding-horizontal@s">
+                                    <div class="user-card" id="userCard">
+                                        <!-- Placeholder for dynamic user data -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        $(document).ready(function() {
+            const token = localStorage.getItem("jwt");
+
+            if (token) {
+				const csrfToken = getCookie('csrftoken');
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/user/',  // Endpoint to fetch user data
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+						'X-CSRFToken': csrfToken
+                    },
+                    success: function(response) {
+                        console.log('User data:', response);
+
+                        // Update DOM with user data
+                        $('#userCard').html(`
+                            <span class="avatar-holder">
+                                <img src="${response.avatar}" alt="Avatar">
+                            </span>
+                            <span class="user-info-holder">
+                                <h2 class="name">${response.name}</h2>
+                                <span class="skill">${response.timeInBank}</span>
+                            
+                                <div class="evaluations">
+                                    <span class="stars evaluation">
+                                        <span class="star-icon evaluation-icon">
+                                            <!-- Insert star icon or rating symbol here -->
+                                        </span>
+                                        <span class="star-text evaluation-text">${response.creditScore} Credit Rating Score</span>
+                                        <br>
+                                    </span>
+                            
+                                    <span class="reviews evaluation">
+                                        <!-- Additional evaluation details if needed -->
+                                    </span>
+                            
+                                    <span class="student evaluation">
+                                        <span class="student-icon evaluation-icon">
+                                            <!-- Insert student or dependants icon here -->
+                                        </span>
+                                        <span class="student-text evaluation-text">${response.dependants} Dependads</span>
+                                        <br>
+                                    </span>
+                                    <span class="student-text evaluation-text">Account Balance($): ${response.balance}</span>
+                                </div>
+                            
+                                <span class="desc">
+                                    <p>Welcome Back ${response.name}, Take a look at your recent transactions below</p>
+                                </span>
+                            
+                                <span class="button">
+                                    <button class="show-more-btn">Recent Transactions</button>
+                                </span>
+                            </span>
+                        `);
+                    },
+                    error: function(xhr, errmsg, err) {
+                        console.error('Error fetching user data:', xhr.responseJSON);
+                        // Handle error scenario, e.g., redirect to login page
+                    }
+                });
+            } else {
+                console.error('JWT token not found in localStorage.');
+                // Redirect to login page or handle unauthenticated scenario
+            }
+        })
+		function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Check if this cookie contains the name we are looking for
+            if (cookie.startsWith(name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;}
+    </script>
+</body>
+</html>

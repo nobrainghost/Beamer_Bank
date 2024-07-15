@@ -1,0 +1,128 @@
+{% load static%}
+<!doctype html>
+<html lang="en">
+
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Bank Project">
+	<meta name="author" content="Indonez">
+	<meta name="theme-color" content="#00B276">
+	<link rel="preload" href="{% static 'fonts/fa-brands-400.woff2' %}" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{% static 'fonts/fa-solid-900.woff2' %}" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{% static 'fonts/mulish-v3-latin-300.woff2' %}" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{% static 'fonts/mulish-v3-latin-800.woff2' %}" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{% static 'fonts/roboto-v20-latin-300.woff2' %}" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{% static 'css/style.css' %}" as="style">
+	<link rel="preload" href="{% static 'js/vendors/uikit.min.js'%}" as="script">
+	<link rel="preload" href="{% static 'js/utilities.min.js' %}" as="script">
+	<link rel="preload" href="{% static 'js/config-theme.js' %}" as="script">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<script src="{% static 'js/vendors/uikit.min.js' %}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="{% static 'img/apple-touch-icon.png' %}">
+	<title>Beamer Bank</title>
+</head>
+
+
+<body>
+	<div class="page-loader">
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+	<main>
+		<style>
+			.background-image-signin {
+				background-image: url("{% static 'img/in-signin-image.jpg' %}");
+			}
+		</style>
+		<div class="uk-section uk-padding-remove-vertical">
+			<div class="uk-container uk-container-expand">
+				<div class="uk-grid" data-uk-height-viewport="expand: true">
+					<div class="uk-width-3-5@m uk-background-cover uk-background-center-right uk-visible@m uk-box-shadow-xlarge background-image-signin">
+						
+					</div>
+					<div class="uk-width-expand@m uk-flex uk-flex-middle">
+						<div class="uk-grid uk-flex-center">
+							<div class="uk-width-3-5@m">
+								<div class="uk-text-center in-padding-horizontal@s">
+									<a class="uk-logo" href="{% url 'index' %}">
+										<img data-src="{% static 'img/logoo.svg' %}" alt="logo" width="130" height="36" data-uk-img>
+									</a>
+									<p class="uk-text-lead uk-margin-small-top uk-margin-medium-bottom">Sign Up for an Account</p>
+									<form class="uk-grid uk-form" id="registration-form">
+										<div class="uk-margin-small uk-width-1-1 uk-inline">
+											<span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
+											<input class="uk-input uk-border-rounded" id="name" value="" type="text" placeholder="Full Names">
+										</div>
+										<div class="uk-margin-small uk-width-1-1 uk-inline">
+											<span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
+											<input class="uk-input uk-border-rounded" id="email" value="" type="email" placeholder="Email">
+										</div>
+										<div class="uk-margin-small uk-width-1-1 uk-inline">
+											<span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-sm"></span>
+											<input class="uk-input uk-border-rounded" id="password" value="" type="password" placeholder="Password">
+										</div>
+										<div class="uk-margin-small uk-width-1-1 uk-inline">
+											<span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
+											<input class="uk-input uk-border-rounded" id="phone" value="" type="number" placeholder="Phone Number">
+										</div>
+										<div class="uk-margin-small uk-width-expand uk-text-small">
+											<label class="uk-align-right"><a class="uk-link-reset" href="#">Already have an account? <a href="signin.html">Login</a></label>
+										</div>
+										<div class="uk-margin-small uk-width-1-1">
+											<button class="uk-button uk-width-1-1 uk-button-primary uk-border-rounded uk-float-left" type="submit" name="submit">CREATE</button>
+										</div>
+									</form>
+									<p class="uk-heading-line"><span>Or sign up with</span></p>
+									<div class="uk-margin-medium-bottom">
+										<a class="uk-button uk-button-primary uk-button-small uk-border-rounded color-google" href="#"><i class="fab fa-google uk-margin-small-right"></i>Google</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script src="js/utilities.min.js"></script>
+	<script src="js/config-theme.js"></script>
+	<script>
+        $(document).ready(function() {
+            $('#registration-form').submit(function(event) {
+                event.preventDefault();
+                
+                // Serialize form data into JSON format
+				const formData = {
+                    'name': $('#name').val(),
+                    'email': $('#email').val(),
+                    'password': $('#password').val(),
+                    'phone': $('#phone').val()
+                };
+                // AJAX request to register endpoint
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/register/',
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        $('#message').html('<p>Registration successful!</p>');
+                        // Optionally redirect to login page
+                        window.location.href = '/signin/';
+                    },
+                    error: function(xhr, errmsg, err) {
+                        $('#message').html('<p>Error: ' + xhr.responseJSON.detail + '</p>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+
+</html>
