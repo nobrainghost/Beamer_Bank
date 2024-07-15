@@ -1,1 +1,1 @@
-web: gunicorn beamerbank.wsgi
+web: gunicorn --chdir ./beamerbank beamerbank.wsgi --log-file -
