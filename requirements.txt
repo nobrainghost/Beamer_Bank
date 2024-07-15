@@ -29,7 +29,7 @@ idna
 jsonpatch
 jsonpointer==2.1
 # libmambapy 
-menuinst
+# menuinst
 multidict==6.0.5
 packaging
 platformdirs
