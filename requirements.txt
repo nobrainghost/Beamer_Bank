@@ -54,3 +54,8 @@ wheel==0.43.0
 whitenoise==6.7.0
 yarl==1.9.4
 zstandard 
+django
+gunicorn
+whitenoise
+dj-database-url
+psycopg2-binary
