@@ -28,7 +28,7 @@ gunicorn==22.0.0
 idna
 jsonpatch
 jsonpointer==2.1
-libmambapy 
+# libmambapy 
 menuinst
 multidict==6.0.5
 packaging
