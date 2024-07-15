@@ -9,11 +9,11 @@ certifi
 cffi
 charset-normalizer
 colorama==0.4.6
-conda 
-conda-content-trust 
-conda-libmamba-solver 
-conda-package-handling 
-conda_package_streaming 
+# conda 
+# conda-content-trust 
+# conda-libmamba-solver 
+# conda-package-handling 
+# conda_package_streaming 
 cryptography 
 distro 
 dj-database-url==2.2.0
