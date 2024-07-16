@@ -139,7 +139,7 @@
 					</li>
 					<li>
 						<div class="uk-position-cover uk-animation-kenburns uk-animation-reverse">
-							<img src="img/in-lazy.gif" data-src="{% static 'img/in-slideshow-image-2.jpg' %}" alt="slideshow-image" data-uk-cover width="1920" height="500" data-uk-img>
+							<img src="{% static 'img/in-lazy.gif' %}" data-src="{% static 'img/in-slideshow-image-2.jpg' %}" alt="slideshow-image" data-uk-cover width="1920" height="500" data-uk-img>
 						</div>
 						<div class="uk-container">
 							<div class="uk-grid uk-flex uk-flex-center" data-uk-grid>
@@ -168,7 +168,7 @@
 					</li>
 					<li>
 						<div class="uk-position-cover uk-animation-kenburns uk-animation-reverse">
-							<img src="img/in-lazy.gif" data-src="img/in-slideshow-image-3.jpg" alt="slideshow-image" data-uk-cover width="1920" height="500" data-uk-img>
+							<img src="img/in-lazy.gif" data-src="{% static 'img/in-slideshow-image-3.jpg' %}" alt="slideshow-image" data-uk-cover width="1920" height="500" data-uk-img>
 						</div>
 						<div class="uk-container">
 							<div class="uk-grid" data-uk-grid>
@@ -249,24 +249,24 @@
 							<h1 class="uk-h2 uk-text-center">A Million Ways to Brighten the Future, In One Place .</h1>
 							<div class="uk-child-width-1-2@s uk-child-width-1-4@m uk-text-center" data-uk-grid>
 								<div>
-									<img src="img/in-lazy.gif" data-src="{% static 'img/money.svg' %}" alt="icon" width="102" height="127" data-uk-img>
+									<img src="{% static 'img/in-lazy.gif' %}" data-src="{% static 'img/money.svg' %}" alt="icon" width="102" height="127" data-uk-img>
 									<h6 class="uk-margin-top uk-margin-remove-bottom uk-text-emphasis uk-text-uppercase">Investing</h6>
 									<p class="uk-margin-small-top">Endless Investing Instrumens to continously grow your wealth all at your comfort</p>
 								</div>
 								<div>
-									<img src="img/in-lazy.gif" data-src="{% static 'img/investment.png' %}" alt="icon" width="102" height="127" data-uk-img>
+									<img src="{% static 'img/in-lazy.gif' %}" data-src="{% static 'img/investment.png' %}" alt="icon" width="102" height="127" data-uk-img>
 									<h6 class="uk-margin-top uk-margin-remove-bottom uk-text-emphasis uk-text-uppercase">Business Financing</h6>
 									<p class="uk-margin-small-top">Get upto 95% in business initial capital with very flexible investment terms
 							
 									</p>
 								</div>
 								<div>
-									<img src="img/in-lazy.gif" data-src="{% static 'img/trade.png' %}" alt="icon" width="102" height="127" data-uk-img>
+									<img src="{% static 'img/in-lazy.gif' %}" data-src="{% static 'img/trade.png' %}" alt="icon" width="102" height="127" data-uk-img>
 									<h6 class="uk-margin-top uk-margin-remove-bottom uk-text-emphasis uk-text-uppercase">Tender Financing</h6>
 									<p class="uk-margin-small-top"> No longer Miss out on High value tenders, get upto 100% financing</p>
 								</div>
 								<div>
-									<img src="img/in-lazy.gif" data-src="{% static 'img/advisor.png' %}" alt="icon" width="102" height="127" data-uk-img>
+									<img src="{% static 'img/in-lazy.gif' %}" data-src="{% static 'img/advisor.png' %}" alt="icon" width="102" height="127" data-uk-img>
 									<h6 class="uk-margin-top uk-margin-remove-bottom uk-text-emphasis uk-text-uppercase">Wealth Management</h6>
 									<p class="uk-margin-small-top">Relax and watch it grow in the hands of the best financial experts available</p>
 								</div>
@@ -586,8 +586,8 @@
 	</a>
 	<!-- to top end -->
 	<!-- javascript -->
-	<script src="js/utilities.min.js"></script>
-	<script src="js/config-theme.js"></script>
+	<script src="{% static 'js/utilities.min.js' %}"></script>
+	<script src="{% static 'js/config-theme.js' %}"></script>
 	<script>
     $(document).ready(function() {
 		console.log('Hello from the index page!');
