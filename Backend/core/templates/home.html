@@ -14,74 +14,136 @@
     <link rel="apple-touch-icon-precomposed" href="{% static 'img/apple-touch-icon.png' %}">
     <title>Beamer Bank</title>
     <style>
-        .container {
-            display: flex;
-            height: 100%;
-            width: 100%;
-        }
+       .container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+}
 
-        .background-image {
-            width: 70%;
-            background-image: url("{% static 'img/in-signin-image.jpg' %}");
-            background-size: cover;
-            background-position: center;
-        }
+.background-image {
+    width: 70%;
+    background-image: url("/static/img/in-signin-image.jpg");
+    background-size: cover;
+    background-position: center;
+}
 
-        .content {
-            width: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-            background-color: #160538;
-        }
+.content {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #160538;
+}
 
-        .user-card {
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
+.user-card {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
 
-        .user-card .avatar-holder img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
+.user-card .avatar-holder img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
 
-        .user-card .name {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
+.user-card .name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
 
-        .user-card .evaluation {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 5px 0;
-        }
+.user-card .evaluation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0;
+}
 
-        .user-card .evaluation-icon {
-            margin-right: 10px;
-        }
+.user-card .evaluation-icon {
+    margin-right: 10px;
+}
 
-        .user-card .evaluation-text {
-            font-size: 14px;
-        }
+.user-card .evaluation-text {
+    font-size: 14px;
+}
 
-        .user-card .button {
-            margin-top: 20px;
-        }
+.user-card .button {
+    margin-top: 20px;
+}
 
-        .user-card .show-more-btn {
-            padding: 10px 20px;
-            border: none;
-            background-color: #00B276;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+.user-card .show-more-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #00B276;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .background-image {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .content {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .user-card .name {
+        font-size: 20px;
+    }
+
+    .user-card .evaluation-text {
+        font-size: 12px;
+    }
+
+    .user-card .show-more-btn {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-card .avatar-holder img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .user-card .name {
+        font-size: 18px;
+    }
+
+    .user-card .evaluation {
+        flex-direction: column;
+    }
+
+    .user-card .evaluation-icon {
+        margin-bottom: 5px;
+    }
+
+    .user-card .evaluation-text {
+        font-size: 12px;
+    }
+
+    .user-card .show-more-btn {
+        padding: 6px 12px;
+    }
+}
+
     </style>
 </head>
 <body>
