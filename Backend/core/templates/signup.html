@@ -29,7 +29,7 @@
 
 
 <body>
-	<div class="page-loader">
+	<div class="page-loader f">
 		<div></div>
 		<div></div>
 		<div></div>
@@ -38,6 +38,8 @@
 		<style>
 			.background-image-signin {
 				background-image: url("{% static 'img/in-signin-image.jpg' %}");
+				width: 100%;
+				height: 100%;
 			}
 		</style>
 		<div class="uk-section uk-padding-remove-vertical">
@@ -72,7 +74,7 @@
 											<input class="uk-input uk-border-rounded" id="phone" value="" type="number" placeholder="Phone Number">
 										</div>
 										<div class="uk-margin-small uk-width-expand uk-text-small">
-											<label class="uk-align-right"><a class="uk-link-reset" href="#">Already have an account? <a href="signin">Login</a></label>
+										<label class="uk-align-right"><a class="uk-link-reset" href="#">Already have an account? <a href="{%url 'signin' %}">Login</a></label>
 										</div>
 										<div class="uk-margin-small uk-width-1-1">
 											<button class="uk-button uk-width-1-1 uk-button-primary uk-border-rounded uk-float-left" type="submit" name="submit">CREATE</button>
