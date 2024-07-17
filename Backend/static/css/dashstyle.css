@@ -89,7 +89,6 @@ nav {
     max-height: 100vh;
     overflow-x: hidden;
     overflow-y: scroll;
-    /* background: url('/images/bg2.png'); */
     background-attachment: fixed;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -787,7 +786,6 @@ form input[type="submit"]:hover {
 
     nav.sidebar {
         position: absolute;
-        /* background: url('./images/bg2.png'), rgba(243, 243, 243, 1); */
         background-position-x: 0%;
         background-position-y: 70%;
         top: 0%;
