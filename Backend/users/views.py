@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from .serializers import UserSerializer
+from .serializers import UserSerializer, TransactionSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
-from .models import User
+from .models import User,Transactions
 import jwt,datetime
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from django.db import transaction
+from decimal import Decimal
 
 
 # Create your views here.
@@ -68,3 +70,59 @@ class LogoutView(APIView):
             'message':'success'
         }
         return response
+
+class DepositView(APIView):
+    
+    def post(self,request):
+        token=request.COOKIES.get('jwt')
+        if not token:
+            raise AuthenticationFailed('Unauthenticated')
+        try:
+            payload=jwt.decode(token,'secret',algorithms=['HS256'])
+        except jwt.ExpiredSignatureError:
+            raise AuthenticationFailed('Unauthenticated')
+        user=User.objects.filter(id=payload['id']).first()
+        amount=request.data['amount']
+        amount=Decimal(amount)
+        if amount<=0:
+            return Response({'message':'Amount must be greater than 0'})
+        transaction_date=datetime.datetime.now()
+        Transactions.objects.create(user=user,transaction_status=True ,transaction_type='deposit',amount=amount,transaction_date=transaction_date)
+        user.account_balance=user.account_balance+amount
+        user.save()
+        return Response({'message':'success'})
+    
+
+class WithdrawView(APIView):
+    def post(self,request):
+        token=request.COOKIES.get('jwt')
+        if not token:
+            raise AuthenticationFailed('Unauthenticated')
+        try:
+            payload=jwt.decode(token,'secret',algorithms=['HS256'])
+        except jwt.ExpiredSignatureError:
+            raise AuthenticationFailed('Unauthenticated')
+        user=User.objects.filter(id=payload['id']).first()
+        amount=request.data['amount']
+        amount=Decimal(amount)
+        account_balance=user.account_balance
+        if amount>account_balance:
+            return Response({'message':'Insufficient balance'})
+        Transactions.objects.create(user=user,transaction_status=True ,transaction_type='withdraw',amount=amount,transaction_date=datetime.datetime.now())
+        user.account_balance=account_balance-amount
+        user.save()
+        return Response(f'Amount withdrawn successfully {amount}, balance : {user.account_balance}')  
+
+
+class TransactionListView(APIView):
+    def get(self,request):
+        token=request.COOKIES.get('jwt')
+        if not token:
+            raise AuthenticationFailed('Unauthenticated')
+        try:
+            payload=jwt.decode(token,'secret',algorithms=['HS256'])
+        except jwt.ExpiredSignatureError:
+            raise AuthenticationFailed('Unauthenticated')
+        user=User.objects.filter(id=payload['id']).first()
+        serializer=TransactionSerializer(user.transactions_set.all(),many=True)
+        return Response(serializer.data)           

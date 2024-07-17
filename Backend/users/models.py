@@ -31,3 +31,29 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+    
+
+
+class Transactions(models.Model):
+    TRANSACTION_TYPE_CHOICES=[
+        ('deposit', 'Deposit'),
+        ('withdraw','Withdraw'),
+        ('loan','Loan'),
+    ]
+
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    transaction_type=models.CharField(max_length=255,choices=TRANSACTION_TYPE_CHOICES)
+    amount=models.DecimalField(max_digits=100,decimal_places=2)
+    transaction_date=models.DateTimeField(auto_now_add=True)
+    transaction_id=models.CharField(max_length=255,unique=True)
+    transaction_status=models.BooleanField(default=False)
+
+
+    def generate_transaction_id(self):
+        return ''.join(random.choices('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',k=8))
+    def save(self, *args, **kwargs):
+        self.transaction_id=self.generate_transaction_id()
+        super(Transactions,self).save(*args,**kwargs)
+    def __str__(self):
+        return f'{self.user.email} - {self.transaction_type} - {self.amount} - {self.transaction_date}'
+    
