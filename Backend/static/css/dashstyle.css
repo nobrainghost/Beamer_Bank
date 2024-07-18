@@ -137,6 +137,7 @@ nav .logo span {
 .nav_links {
     margin-top: 20px;
     width: 100%;
+    background: #170639;
 }
 
 .nav_links a.nav_link {
@@ -147,11 +148,13 @@ nav .logo span {
     font-size: 16px;
     text-transform: capitalize;
     transition: hover 1s ease;
+    background: #170639;
 }
 
 
 a.nav_link svg .icon {
     fill: var(--text-grey);
+    background: #170639;
 }
 
 .nav_links a.nav_link:hover .nav_link_text,
@@ -184,16 +187,18 @@ a.nav_link svg .icon {
 
 .life_cover_text p.title {
     font-size: 14px;
-    color: var(--text-black);
+    color: var(--text-white);
     font-weight: 600;
     text-align: center;
 }
 
 .life_cover_text p.desc {
     font-size: 12px;
-    color: #170639;
+    color: #ffffff;
     font-weight: 400;
     text-align: center;
+    background: transparent;
+    
 }
 
 .life_cover_offer a {
@@ -201,13 +206,14 @@ a.nav_link svg .icon {
     margin-inline: 20px;
     width: 85%;
     padding: 10px 20px;
-    color: var(--text-black);
+    color: var(--text-white);
     border: 2px solid #170639;
     border-radius: 16px;
     text-transform: capitalize;
     text-align: center;
     font-weight: 500;
     transition: 1s ease;
+    background: #170639;
 }
 
 .life_cover_offer a:hover {
@@ -231,6 +237,7 @@ a.nav_link svg .icon {
     transition: 1s ease;
     cursor: pointer;
     color: white;
+    background: #170639;
 }
 
 .profile .img_with_name {
@@ -238,12 +245,14 @@ a.nav_link svg .icon {
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+    background: #170639;
 }
 
 .profile .img_with_name img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    background: #170639;
 }
 
 .profile .img_with_name p.name {
@@ -799,6 +808,7 @@ form input[type="submit"]:hover {
         background-position-y: 70%;
         top: 0%;
         left: -200%;
+        background: #170639;
         transition: 1s ease;
     }
 
@@ -806,6 +816,7 @@ form input[type="submit"]:hover {
         position: absolute;
         top: 0%;
         left: 0%;
+        background: #170639;
     }
 
     nav.sidebar #btn_close {
