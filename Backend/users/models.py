@@ -47,6 +47,7 @@ class Transactions(models.Model):
     transaction_date=models.DateTimeField(auto_now_add=True)
     transaction_id=models.CharField(max_length=255,unique=True)
     transaction_status=models.BooleanField(default=False)
+    receiver=models.CharField(max_length=255,blank=True,null=True)
 
 
     def generate_transaction_id(self):

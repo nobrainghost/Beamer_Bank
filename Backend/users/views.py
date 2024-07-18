@@ -84,10 +84,11 @@ class DepositView(APIView):
         user=User.objects.filter(id=payload['id']).first()
         amount=request.data['amount']
         amount=Decimal(amount)
+        receiver='Self'
         if amount<=0:
             return Response({'message':'Amount must be greater than 0'})
         transaction_date=datetime.datetime.now()
-        Transactions.objects.create(user=user,transaction_status=True ,transaction_type='deposit',amount=amount,transaction_date=transaction_date)
+        Transactions.objects.create(user=user,transaction_status=True ,transaction_type='deposit',receiver=receiver, amount=amount,transaction_date=transaction_date)
         user.account_balance=user.account_balance+amount
         user.save()
         return Response({'message':'success'})
@@ -105,10 +106,11 @@ class WithdrawView(APIView):
         user=User.objects.filter(id=payload['id']).first()
         amount=request.data['amount']
         amount=Decimal(amount)
+        receiver=request.data['receiver']
         account_balance=user.account_balance
         if amount>account_balance:
             return Response({'message':'Insufficient balance'})
-        Transactions.objects.create(user=user,transaction_status=True ,transaction_type='withdraw',amount=amount,transaction_date=datetime.datetime.now())
+        Transactions.objects.create(user=user,transaction_status=True,receiver=receiver ,transaction_type='withdraw',amount=amount,transaction_date=datetime.datetime.now())
         user.account_balance=account_balance-amount
         user.save()
         return Response(f'Amount withdrawn successfully {amount}, balance : {user.account_balance}')  

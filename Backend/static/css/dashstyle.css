@@ -4,7 +4,7 @@
 
     /* font-family */
     --font-poppins: 'Poppins', sans-serif;
-    --font-arial:'arial';
+    --font-arial: 'arial';
 
     /* text color */
     --text-black: #000000;
@@ -391,7 +391,7 @@ main .bank_balance_card {
 .bank_balance_card p.balance {
     font-size: 36px;
     font-weight: 700;
-    color: #f9f9fa;
+    color: var(--text-white);
 }
 
 .bank_balance_card .account_no {
@@ -401,12 +401,16 @@ main .bank_balance_card {
     ;
 }
 
+.no {
+    color: #ffffff;
+}
+
 .bank_balance_card .account_no span {
-    color: #170639;
+    color: #b4c9dd;
 }
 
 .bank_balance_card .account_no span>span.no {
-    color: #170639;
+    color: #ffffff;
     font-weight: 600;
 }
 
@@ -474,6 +478,7 @@ main .button_group .r_transaction:hover::before {
     transform: translate(-50%, -50%) rotate(45deg);
     z-index: -1;
 }
+
 main .button_group .s_analysis {
     background: #170639;
     color: var(--text-white);
@@ -675,7 +680,8 @@ form .phone_no_info label img {
 
 form .amount {
     margin-top: 20px;
-    display: flex;;
+    display: flex;
+    ;
     align-items: center;
     justify-content: space-between;
     border-bottom: 2px solid var(--text-grey);
@@ -846,24 +852,21 @@ form input[type="submit"]:hover {
         padding-inline: 20px;
     }
 
-    
-    aside
-    {
+
+    aside {
         width: 100vw;
         height: auto;
         display: flex;
         flex-direction: column-reverse;
         gap: 30px;
-        padding-bottom:30px ;
+        padding-bottom: 30px;
     }
 
-    .transfer_money_section .button_group
-    {
+    .transfer_money_section .button_group {
         justify-content: space-evenly;
     }
 
-    .transfer_money_section p.title
-    {
+    .transfer_money_section p.title {
         width: 100%;
         text-align: center;
     }
@@ -874,8 +877,7 @@ form input[type="submit"]:hover {
     }
 
 
-    .cards .title_with_button
-    {
+    .cards .title_with_button {
         justify-content: space-evenly;
     }
 
@@ -889,47 +891,41 @@ form input[type="submit"]:hover {
 
 
 
-    section.main_content .topbar
-    {
+    section.main_content .topbar {
         width: 100vw;
     }
 
-    .get_send_money span.icon
-    {
+    .get_send_money span.icon {
         padding: 6px;
     }
 
-    .get_send_money p.transaction_metadata
-    {
+    .get_send_money p.transaction_metadata {
         font-size: 14px;
     }
 
-    .button_group .r_transaction,.button_group .s_analysis
-    {
+    .button_group .r_transaction,
+    .button_group .s_analysis {
         padding: 10px 14px;
         font-size: 8px;
         letter-spacing: 1px;
     }
 
 
-    .sliber_controller
-    {
+    .sliber_controller {
         display: none;
     }
 
-    .title_with_button p.title,.transfer_money_section p.title
-    {
+    .title_with_button p.title,
+    .transfer_money_section p.title {
         width: 100%;
         text-align: center;
     }
 
-    .cards
-    {
-        background: transparent;
+    .cards {
+        background: #170639;
     }
 
-    nav
-    {
+    nav {
         padding-bottom: 50px;
     }
 
