@@ -322,16 +322,16 @@
                             <button class="via_ac" aria-label="via_ac">via account no.</button>
                         </div>
 
-                        <form onsubmit="return mySubmitFunction(event)">
+                        <form onsubmit=" return mySubmitFunction(event)">
                             <div class="phone_no_info">
                                 <label for="phone_no">Account No</label>
-                                <input type="number" name="phone_no" id="phone_no" placeholder="000000000">
+                                <input id="receiver-account-number" type="number" name="phone_no" id="phone_no" placeholder="000000000">
                             </div>
 
                             <div class="amount">
                                 <div>
                                     <label for="ruppes"> Amount($) </label>
-                                    <input type="number" name="phone_no" id="rupees" placeholder="00.00">
+                                    <input id="sending-amount" type="number" name="phone_no" id="rupees" placeholder="00.00">
                                 </div>
                             </div>
 
@@ -382,19 +382,14 @@
                                 <button class="via_ac" aria-label="via_ac">ACCOUNT    DEPOSIT</button>
                             </div>
                         
-                            <form onsubmit="return mySubmitFunction(event)">
-                                <div class="phone_no_info">
-                                    <label for="phone_no">Acc No: </label>
-                                    <input type="number" name="phone_no" id="phone_no" placeholder="00000000000">
-                                </div>
-                        
+                            <form onsubmit=" return myDepositFunction(event)">
                             <div class="phone_no_info">
                                 <label for="phone_no">Amount($): </label>
-                                <input type="number" name="self-deposit-amount" id="self-deposit-amount" placeholder="00.00">
+                                <input type="number" name="self-deposit-amount" id="self-deposit-amount" placeholder="Amt less than 10M" maxlength="8" >
                             </div>
 
                         
-                                <input type="submit" value="SEND" />
+                                <input type="submit" value="DEPOSIT" />
                             </form>
                         </div>
                     </div>
@@ -411,6 +406,28 @@
 
     <!-- Initialize Swiper -->
     <script>
+        function myDepositFunction(e) {
+                e.preventDefault();
+                const depositData = {
+                    'amount': document.getElementById('self-deposit-amount').value,
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/deposit/',
+                    data: JSON.stringify(depositData),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        console.log(response)
+                        if (response.status == 200) {
+                            alert(response.message)
+                        }
+                    },
+                    error: function (xhr, errmsg, err) {
+                        console.log(xhr.status + ": " + xhr.responseText);
+                    }
+                });
+            }
         $(document).ready(function(){
             const token=localStorage.getItem('jwt');
             if(token){
