@@ -17,9 +17,11 @@ class User(AbstractUser):
     REQUIRED_FIELDS=[]
 
     def generate_random_account_number(self):
-        return ''.join(random.choices('0123456789BEAMER',k=16))
+        return ''.join(random.choices('0123456789',k=16))
+    
+
+
     def save(self, *args, **kwargs):
-        self.account_number=self.generate_random_account_number()
         super(User,self).save(*args,**kwargs)
 
     @property
