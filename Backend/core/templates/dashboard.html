@@ -319,23 +319,20 @@
                     <div class="transfer_money_section">
                         <p class="title">quick transfer</p>
                         <div class="button_group">
-                            <button class="via_no" aria-label="via_no">via mobile no.</button>
                             <button class="via_ac" aria-label="via_ac">via account no.</button>
                         </div>
 
                         <form onsubmit="return mySubmitFunction(event)">
                             <div class="phone_no_info">
-                                <label for="phone_no"><img src="{% static '/img/images/india.png' %}" alt="">&nbsp;+254 </label>
-                                <input type="number" name="phone_no" id="phone_no" placeholder="0712345678">
-                                <img src="{% static '/img/images/profile_pic.webp' %}" alt="">
+                                <label for="phone_no">Account No</label>
+                                <input type="number" name="phone_no" id="phone_no" placeholder="000000000">
                             </div>
 
                             <div class="amount">
                                 <div>
-                                    <label for="ruppes">$ </label>
-                                    <input type="number" name="phone_no" id="rupees" placeholder="30,550.00">
+                                    <label for="ruppes"> Amount($) </label>
+                                    <input type="number" name="phone_no" id="rupees" placeholder="00.00">
                                 </div>
-                                <span>USD</span>
                             </div>
 
                             <input type="submit" value="send to john" />
@@ -363,6 +360,7 @@
                                     </svg>
                                 </div>
                             </div>
+                            
                         </div>
 
                         <div class="swiper mySwiper">
@@ -373,6 +371,32 @@
                             </div>
                         </div>
                         <div class="swiper-page"></div>
+                        <br>
+                        <br>
+                        <br>
+                        
+                        
+                        <div class="transfer_money_section">
+                            <p class="title">Self Deposit</p>
+                            <div class="button_group">
+                                <button class="via_ac" aria-label="via_ac">ACCOUNT    DEPOSIT</button>
+                            </div>
+                        
+                            <form onsubmit="return mySubmitFunction(event)">
+                                <div class="phone_no_info">
+                                    <label for="phone_no">Acc No: </label>
+                                    <input type="number" name="phone_no" id="phone_no" placeholder="00000000000">
+                                </div>
+                        
+                            <div class="phone_no_info">
+                                <label for="phone_no">Amount($): </label>
+                                <input type="number" name="self-deposit-amount" id="self-deposit-amount" placeholder="00.00">
+                            </div>
+
+                        
+                                <input type="submit" value="send to john" />
+                            </form>
+                        </div>
                     </div>
 
                 </aside>
@@ -484,7 +508,7 @@
                             $('#second-transaction-receiver').text(`${second_transaction_receiver}`);
                             $('#third-transaction-receiver').text(`${third_transaction_receiver}`);
                             $('#fourth-transaction-receiver').text(`${fourth_transaction_receiver}`);
-                            
+
 
 
 

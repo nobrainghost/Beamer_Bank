@@ -623,6 +623,9 @@ aside .transfer_money_section {
     color: white;
     border: 1px solid #170639;
 }
+.via_ac{
+    width: 400px;
+}
 
 .button_group button.via_no:hover,
 .button_group button.via_ac:hover {
@@ -679,9 +682,8 @@ form .phone_no_info label img {
 }
 
 form .amount {
-    margin-top: 20px;
+    margin-top:0px;
     display: flex;
-    ;
     align-items: center;
     justify-content: space-between;
     border-bottom: 2px solid var(--text-grey);
@@ -691,6 +693,7 @@ form .amount {
     font-size: 14px;
     font-weight: 600;
     color: var(--text-white);
+    width: 100px;
 }
 
 .amount input[type="number"] {
