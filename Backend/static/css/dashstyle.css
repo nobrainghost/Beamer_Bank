@@ -847,12 +847,14 @@ form input[type="submit"]:hover {
         gap: 30px;
         width: 100%;
         height: auto;
+        background: #170639;
     }
 
     section.main_content section main {
         /* background: #000; */
         width: 100vw;
         padding-inline: 20px;
+        background: #170639;
     }
 
 
