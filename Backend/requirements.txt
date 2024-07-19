@@ -43,7 +43,7 @@ PySocks
 requests
 rest-framework-simplejwt==0.0.2
 ruamel.yaml
-setuptools==69.5.1
+setuptools==70.0.0
 socialscan==2.0.1
 sqlparse 
 tqdm 
