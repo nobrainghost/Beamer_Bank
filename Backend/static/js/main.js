@@ -15,12 +15,27 @@ closeBtn.addEventListener("click",()=>{
 
 function mySubmitFunction(e) {
     e.preventDefault();
+    document.getElementById('loader').style.display = 'flex';
     const depositData = {
         'receiver_account_number': document.getElementById('receiver-account-number').value,
         'amount': document.getElementById('sending-amount').value,
     }
-
-    $.ajax({
+    if (depositData.receiver_account_number.length < 10) {
+        alert('Receiver Account Number must be 10 digits')
+        return;
+        
+    }
+    if (depositData.amount < 1) {
+        alert('Amount must be greater than 0')
+        return;
+    }
+    if (depositData.amount == '') {
+        alert('Amount must be greater than 0')
+        return;
+    }
+    if (depositData.receiver_account_number.length>=10 && depositData.amount >= 1) {
+        document.getElementById('loader').style.display = 'flex';
+        $.ajax({
         type: 'POST',
         url: '/api/send/',
         data: JSON.stringify(depositData),
@@ -33,31 +48,19 @@ function mySubmitFunction(e) {
         },
         error: function (xhr, errmsg, err) {
             console.log(xhr.status + ": " + xhr.responseText);
-        }
-    });
+        },
+        complete: function () {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('receiver-account-number').value = '';
+            document.getElementById('sending-amount').value= '';
 
-function myDepositFunction(e) {
-        e.preventDefault();
-        const depositData = {
-            'amount': document.getElementById('self-deposit-amount').value,
-        }
 
-        $.ajax({
-            type: 'POST',
-            url: '/api/deposit/',
-            data: JSON.stringify(depositData),
-            contentType: 'application/json',
-            success: function (response) {
-                console.log(response)
-                if (response.status == 200) {
-                    alert(response.message)
-                }
-            },
-            error: function (xhr, errmsg, err) {
-                console.log(xhr.status + ": " + xhr.responseText);
-            }
-        });
+            alert('Transaction Successful')
+            location.reload();
     }
+    });
+    }
+
 
     return false;
   }

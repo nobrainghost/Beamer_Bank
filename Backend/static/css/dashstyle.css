@@ -329,6 +329,7 @@ section.main_content .topbar {
 .topbar .overview_text p.title {
     font-size: 36px;
     font-weight: 300;
+    color: var(--text-white);
 }
 
 .topbar .overview_text p.desc {
@@ -671,6 +672,7 @@ aside .transfer_money_section {
     padding: 8px 14px;
     outline: none;
     caret-color: var(--text-primary);
+    border-radius: 10px;
 }
 
 .transfer_money_section form .phone_no_info input[type="number"]::placeholder {
@@ -712,6 +714,7 @@ form .amount {
     outline: none;
     caret-color: var(--text-primary);
     margin-left: 50PX;
+    border-radius: 10px;
 }
 
 .amount input[type="number"]::placeholder {
@@ -858,14 +861,14 @@ form input[type="submit"]:hover {
         gap: 30px;
         width: 100%;
         height: auto;
-        background: #170639;
+        background: transparent;
     }
 
     section.main_content section main {
         /* background: #000; */
         width: 100vw;
         padding-inline: 20px;
-        background: #170639;
+        background: transparent;
     }
 
 
@@ -938,7 +941,7 @@ form input[type="submit"]:hover {
     }
 
     .cards {
-        background: #170639;
+        background: transparent;
     }
 
     nav {

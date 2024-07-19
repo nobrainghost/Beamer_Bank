@@ -56,6 +56,14 @@
                         d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" />
                 </svg>
             </button>
+            <!-- Loader -->
+            <div class="loader" id="loader">
+                <div class="loader-item"></div>
+                <div class="loader-item"></div>
+                <div class="loader-item"></div>
+                <div class="loader-item"></div>
+                <div class="loader-item"></div>
+            </div>
 
             <div class="logo">
                 <img src="{% static 'img/images/logo.webp' %}" alt="logo">
@@ -102,6 +110,17 @@
                                 d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 8H4v8h16v-8zm0-2V5H4v4h16zm-6 6h4v2h-4v-2z" />
                         </svg>
                     </div>
+                    <!-- Custom Alert -->
+                    <div id="custom-alert" class="alert hidden">
+                        <div class="alert-content">
+                            <span id="alert-message">This is an alert message</span>
+                            <button class="alert-close" onclick="closeAlert()">
+                                <span class="spinner hidden" id="spinner"></span>
+                                <span id="button-text">Close</span>
+                            </button>
+                        </div>
+                    </div>
+
 
                     <div class="nav_link_text">
                         Loans
@@ -227,7 +246,7 @@
                     <div class="transaction_info">
 
                         <div class="transaction_date">
-                            Today | 22nd jan, 2020
+                            Today | <span id="today-date">loading</span>
                         </div>
 
                         <div class="transaction_data" id="tranactions-container">
@@ -267,9 +286,7 @@
 
                     <div class="transaction_info">
 
-                        <div class="transaction_date">
-                            Yesterday | 21nd jan, 2020
-                        </div>
+                        
 
                         <div class="transaction_data">
                             <div class="get_send_money">
@@ -403,6 +420,197 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poiret+One&display=swap');
+
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		color: white;
+		font-family: "Poiret One", sans-serif;
+		width: 100%;
+		height: 100%;
+	}
+
+	.loader {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: left;
+		background: #170639;
+		opacity: 0.9;
+		z-index: 9999;
+		display: none;
+		/* Hidden by default */
+	}
+/* #24cca7
+#4956e0
+#170639 */
+	.loader-item {
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		background: #fff;
+		margin: 10px;
+		box-shadow: 0px 0px 10px 4px #170639;
+		animation: bounce 4s cubic-bezier(0.600, -0.280, 0.790, 1.630) infinite;
+	}
+
+	.loader-item:nth-child(1) {
+		animation-delay: -.7s;
+        background: #24cca7;
+	}
+
+	.loader-item:nth-child(2) {
+		animation-delay: -1s;
+        background: #4956e0;
+	}
+
+	.loader-item:nth-child(3) {
+		animation: none;
+        background: blue;
+	}
+
+	.loader-item:nth-child(4) {
+		animation-delay: -1s;
+        background: #24cca7;
+	}
+
+	.loader-item:nth-child(5) {
+		animation-delay: -.7s;
+        background: #4956e0;
+	}
+
+	@keyframes bounce {
+		5% {
+			transform: translateY(40px);
+		}
+
+		10% {
+			transform: translateY(-40px);
+		}
+
+		15% {
+			transform: translateY(30px);
+		}
+
+		20% {
+			transform: translateY(-30px);
+		}
+
+		25% {
+			transform: translateY(20px);
+		}
+
+		30% {
+			transform: translateY(-20px);
+		}
+
+		35% {
+			transform: translateY(15px);
+		}
+
+		40% {
+			transform: translateY(-15px);
+		}
+
+		45% {
+			transform: translateY(10px);
+		}
+
+		50% {
+			transform: translateY(-10px);
+		}
+
+		55% {
+			transform: translateY(8px);
+		}
+
+		60% {
+			transform: translateY(-8px);
+		}
+
+		65% {
+			transform: translateY(6px);
+		}
+
+		70% {
+			transform: translateY(-6px);
+		}
+
+		80% {
+			transform: translateY(4px);
+		}
+
+		90% {
+			transform: translateY(-4px);
+		}
+
+		100% {
+			transform: translateY(0);
+		}
+	}
+    /* Alert Styles */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 15px;
+    z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default */
+}
+
+.alert-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-close {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #721c24;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    position: relative;
+}
+
+.spinner {
+    border: 3px solid #f3f3f3; /* Light grey */
+    border-top: 3px solid #721c24; /* Red */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: spin 1s linear infinite;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+    </style>
 
     <!-- Initialize Swiper -->
     <script>
@@ -411,24 +619,54 @@
                 const depositData = {
                     'amount': document.getElementById('self-deposit-amount').value,
                 }
+                console.log(depositData);
+                if (depositData.amount > 10000000) {
+                    alert('Amount should be less than 10M');
 
-                $.ajax({
-                    type: 'POST',
-                    url: '/api/deposit/',
-                    data: JSON.stringify(depositData),
-                    contentType: 'application/json',
-                    success: function (response) {
-                        console.log(response)
-                        if (response.status == 200) {
-                            alert(response.message)
+                    return;
+                }
+                console.log(depositData.amount);
+                if (depositData.amount < 0) {
+                    alert('Amount should be greater than 0');
+                    return;
+                }
+                if (depositData.amount == '') {
+                    showAlert('Please enter an amount', true);
+                    alert('Please enter an amount');
+                }
+                if (depositData.amount>0 && depositData.amount<10000000){
+                    document.getElementById('loader').style.display = 'flex';
+                     $.ajax({
+                        type: 'POST',
+                        url: '/api/deposit/',
+                        data: JSON.stringify(depositData),
+                        contentType: 'application/json',
+                        success: function (response) {
+                            if (response.status == 200) {
+                                alert(response.message)
+                            }
+                        },
+                        error: function (xhr, errmsg, err) {
+                            console.log(xhr.status + ": " + xhr.responseText);
+                        },
+                        complete: function () {
+                            console.log('Request complete');
+                            document.getElementById('loader').style.display = 'none';
+                            document.getElementById('self-deposit-amount').value = ''; 
+                            location.reload();
                         }
-                    },
-                    error: function (xhr, errmsg, err) {
-                        console.log(xhr.status + ": " + xhr.responseText);
-                    }
-                });
+                        
+                    });
+                    
+                }
+
+
+               
             }
+            
+
         $(document).ready(function(){
+            document.getElementById('loader').style.display = 'flex';
             const token=localStorage.getItem('jwt');
             if(token){
                 $.ajax({
@@ -478,6 +716,11 @@
                             $('#third-transaction-date').text(`Transaction Date: ${third_transaction_date}`);
                             $('#fourth-transaction-date').text(`Transaction Date: ${fourth_transaction_date}`);
 
+                            //updating today date
+                            const today = new Date();
+                            const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                            $('#today-date').text(date);
+
                             //updating the transaction types
                             if (first_transaction_type=='deposit'){
                                 keyword='Deposit From'
@@ -526,6 +769,8 @@
                             $('#third-transaction-receiver').text(`${third_transaction_receiver}`);
                             $('#fourth-transaction-receiver').text(`${fourth_transaction_receiver}`);
 
+                            document.getElementById('loader').style.display = 'none';
+
 
 
 
@@ -553,26 +798,7 @@
             
             
             
-        //     $('#transaction-type').text(response.transaction_type);
-        //                 $('#amount').text(response.amount);
-        //                 $('#transaction-date').text(response.transaction_date);
-        //                 $('#transaction-id').text(response.transaction_id);
-        //                 $('#transaction-status').text(response.transaction_status);
-        //                 // $('').text(response.name);
-        //                 // $('#').text(response.name);
-        //                 // $('#').text(response.name);
-                        
-                
-        //             },
-        //             error:function(xhr,errmsg,err){
-        //                 console.error('Error fetching user data:', xhr.responseJSON);
-        //             }
-
-        //         });
-        //     }else{
-        //         console.log('No JWT token found.');
-        //     }
-        // });
+        
         $(document).ready(function () {
                 console.log('Hello from the index page!');
                 const token = localStorage.getItem("jwt");
