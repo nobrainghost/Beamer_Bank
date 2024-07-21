@@ -51,9 +51,11 @@ Test Creds
 ![Screenshot from 2024-07-21 17-24-15](https://github.com/user-attachments/assets/76bbc056-e837-4b72-b759-6c60fe7a695f)
 
 ## Mobile Views
-![1000147029](https://github.com/user-attachments/assets/b58494f8-135b-4363-89a4-e9469ed2dac8)
-![1000147033](https://github.com/user-attachments/assets/0a398e6b-7192-442e-8693-603442e3ffde)
-![1000147031](https://github.com/user-attachments/assets/0c36ec19-9735-4917-a8af-2cf30c5d1c9a)
+![1000147029](https://github.com/user-attachments/assets/b58494f8-135b-4363-89a4-e9469ed2dac8) \
+\
+![1000147033](https://github.com/user-attachments/assets/0a398e6b-7192-442e-8693-603442e3ffde) \
+
+![1000147031](https://github.com/user-attachments/assets/0c36ec19-9735-4917-a8af-2cf30c5d1c9a) \
 
 
 
