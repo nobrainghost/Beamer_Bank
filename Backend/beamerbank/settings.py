@@ -89,15 +89,9 @@ WSGI_APPLICATION = 'beamerbank.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'defaultdb',
-        'USER':'doadmin',
-        'PASSWORD':'AVNS_jglaMyxc6R0nblK7F29',
-        'HOST':'beamer-bank-project-do-user-16125960-0.b.db.ondigitalocean.com',
-        'PORT':'25060',
-        'OPTIONS': {
-            'sslmode': 'require',}
-}
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 # Password validation
