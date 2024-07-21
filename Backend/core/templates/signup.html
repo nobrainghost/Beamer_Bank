@@ -1,130 +1,455 @@
-{% load static%}
-<!doctype html>
-<html lang="en">
-
-
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+{%load static%}
+<!-- Background -->
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Bank Project">
-	<meta name="author" content="Indonez">
-	<meta name="theme-color" content="#00B276">
-	<link rel="preload" href="{% static 'fonts/fa-brands-400.woff2' %}" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="{% static 'fonts/fa-solid-900.woff2' %}" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="{% static 'fonts/mulish-v3-latin-300.woff2' %}" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="{% static 'fonts/mulish-v3-latin-800.woff2' %}" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="{% static 'fonts/roboto-v20-latin-300.woff2' %}" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="{% static 'css/style.css' %}" as="style">
-	<link rel="preload" href="{% static 'js/vendors/uikit.min.js'%}" as="script">
-	<link rel="preload" href="{% static 'js/utilities.min.js' %}" as="script">
-	<link rel="preload" href="{% static 'js/config-theme.js' %}" as="script">
-	<link rel="stylesheet" href="{% static 'css/style.css' %}">
-	<script src="{% static 'js/vendors/uikit.min.js' %}"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
-	<link rel="apple-touch-icon-precomposed" href="{% static 'img/apple-touch-icon.png' %}">
-	<title>Beamer Bank</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
-
-
-<body>
-	<div class="page-loader f">
-		<div></div>
-		<div></div>
-		<div></div>
+<div id="gradient-bg">
+	<div class="gradient-container">
+		<div class="gradient1"></div>
+		<div class="gradient2"></div>
+		<div class="gradient3"></div>
+		<div class="gradient4"></div>
+		<div class="gradient5"></div>
 	</div>
-	<main>
-		<style>
-			.background-image-signin {
-				background-image: url("{% static 'img/in-signin-image.jpg' %}");
-				width: 100%;
-				height: 100%;
-			}
-		</style>
-		<div class="uk-section uk-padding-remove-vertical">
-			<div class="uk-container uk-container-expand">
-				<div class="uk-grid" data-uk-height-viewport="expand: true">
-					<div class="uk-width-3-5@m uk-background-cover uk-background-center-right uk-visible@m uk-box-shadow-xlarge background-image-signin">
-						
-					</div>
-					<div class="uk-width-expand@m uk-flex uk-flex-middle">
-						<div class="uk-grid uk-flex-center">
-							<div class="uk-width-3-5@m">
-								<div class="uk-text-center in-padding-horizontal@s">
-									<a class="uk-logo" href="{% url 'index' %}">
-										<img data-src="{% static 'img/logoo.svg' %}" alt="logo" width="130" height="36" data-uk-img>
-									</a>
-									<p class="uk-text-lead uk-margin-small-top uk-margin-medium-bottom">Sign Up for an Account</p>
-									<form class="uk-grid uk-form" id="registration-form">
-										<div class="uk-margin-small uk-width-1-1 uk-inline">
-											<span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
-											<input class="uk-input uk-border-rounded" id="name" value="" type="text" placeholder="Full Names">
-										</div>
-										<div class="uk-margin-small uk-width-1-1 uk-inline">
-											<span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
-											<input class="uk-input uk-border-rounded" id="email" value="" type="email" placeholder="Email">
-										</div>
-										<div class="uk-margin-small uk-width-1-1 uk-inline">
-											<span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-sm"></span>
-											<input class="uk-input uk-border-rounded" id="password" value="" type="password" placeholder="Password">
-										</div>
-										<div class="uk-margin-small uk-width-1-1 uk-inline">
-											<span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
-											<input class="uk-input uk-border-rounded" id="phone" value="" type="number" placeholder="Phone Number">
-										</div>
-										<div class="uk-margin-small uk-width-expand uk-text-small">
-										<label class="uk-align-right"><a class="uk-link-reset" href="#">Already have an account? <a href="{%url 'signin' %}">Login</a></label>
-										</div>
-										<div class="uk-margin-small uk-width-1-1">
-											<button class="uk-button uk-width-1-1 uk-button-primary uk-border-rounded uk-float-left" type="submit" name="submit">CREATE</button>
-										</div>
-									</form>
-									<p class="uk-heading-line"><span>Or sign up with</span></p>
-									<div class="uk-margin-medium-bottom">
-										<a class="uk-button uk-button-primary uk-button-small uk-border-rounded color-google" href="#"><i class="fab fa-google uk-margin-small-right"></i>Google</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
-	<script src="js/utilities.min.js"></script>
-	<script src="js/config-theme.js"></script>
-	<script>
-        $(document).ready(function() {
-            $('#registration-form').submit(function(event) {
-                event.preventDefault();
-                
-                // Serialize form data into JSON format
-				const formData = {
-                    'name': $('#name').val(),
-                    'email': $('#email').val(),
-                    'password': $('#password').val(),
-                    'phone': $('#phone').val()
-                };
-                // AJAX request to register endpoint
-                $.ajax({
-                    type: 'POST',
-                    url: '/api/register/',
-                    data: JSON.stringify(formData),
-                    contentType: 'application/json',
-                    success: function(response) {
-                        $('#message').html('<p>Registration successful!</p>');
-                        // Optionally redirect to login page
-                        window.location.href = '/signin/';
-                    },
-                    error: function(xhr, errmsg, err) {
-                        $('#message').html('<p>Error: ' + xhr.responseJSON.detail + '</p>');
-                    }
-                });
-            });
-        });
-    </script>
-</body>
+</div>
 
+<!-- Loader -->
+<div class="loader" id="loader">
+	<div class="loader-item"></div>
+	<div class="loader-item"></div>
+	<div class="loader-item"></div>
+	<div class="loader-item"></div>
+	<div class="loader-item"></div>
+</div>
+		<!-- <h1 class="title"><img src="{% static 'img/images/logo.webp' %}" alt="logo"><span>Beamer Bank</span></h1> -->
 
-</html>
+<!-- Form -->
+<form id="registration-form">
+	<div>
+		<p class="signup-error-message" id="signup-error-message">Hello an error occured</p>
+		<!-- <h1 class="title"><img src="{% static 'img/images/logo.webp' %}" alt="logo"><span>Beamer Bank</span></h1> -->
+		<div class="label">Name</div>
+		<input type="text" id="name" />
+		<div class="label">Email</div>
+		<input type="email" id="email"/>
+		<div class="label">Phone Number</div>
+		<input type="number" id="phone" />
+		<div class="label">Password</div>
+		<input type="password" id="password"/>
+		<button type="submit" class="submit">Sign Up Now</button>
+		<div class="label msg">◆ You don't have an account? <a href="/signin">Sign In</a></div>
+	</div>
+</form>
+
+<style>
+	/* ... (your existing CSS) ... */
+</style>
+
+<script>
+	$(document).ready(function () {
+		$('#registration-form').submit(function (event) {
+			event.preventDefault();
+			// Display loader
+			document.getElementById('loader').style.display = 'flex';
+
+			// Serialize form data into JSON format
+			const formData = {
+				'name': $('#name').val(),
+				'email': $('#email').val(),
+				'password': $('#password').val(),
+				'phone': $('#phone').val()
+			};
+			// AJAX request to register endpoint
+			$.ajax({
+				type: 'POST',
+				url: '/api/register/',
+				data: JSON.stringify(formData),
+				contentType: 'application/json',
+				success: function (response) {
+					$('signup-error-message').html('<p>Registration successful!</p>');
+					// Optionally redirect to login page
+					window.location.href = '/signin/';
+				},
+				error: function (xhr, errmsg, err) {
+					document.getElementById('signup-error-message').style.display = 'flex';
+					$('#signup-error-message').html('<p>Error: ' + 'An error occured, try again');
+				}
+		
+			});
+			// Hide loader
+			document.getElementById('loader').style.display = 'none';
+
+		});
+	});
+</script>
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poiret+One&display=swap');
+/* the loader below needs fixing in the trigger */
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		color: white;
+		font-family: "Poiret One", sans-serif;
+		width: 100%;
+		height: 100%;
+	}
+
+	.loader {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: left;
+		background: #170639;
+		opacity: 0.9;
+		z-index: 9999;
+		display: none;
+		/* Hidden by default */
+	}
+
+	.signup-error-message {
+		color: red;
+		display: none;
+		text-align: center;
+		justify-content: center;
+
+	}
+
+	.loader-item {
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		background: #fff;
+		margin: 10px;
+		box-shadow: 0px 0px 10px 4px #170639;
+		animation: bounce 4s cubic-bezier(0.600, -0.280, 0.790, 1.630) infinite;
+	}
+
+	.loader-item:nth-child(1) {
+		animation-delay: -.7s;
+		background: #24cca7;
+	}
+
+	.loader-item:nth-child(2) {
+		animation-delay: -1s;
+		background: #4956e0;
+	}
+
+	.loader-item:nth-child(3) {
+		animation: none;
+		background: blue;
+	}
+
+	.loader-item:nth-child(4) {
+		animation-delay: -1s;
+		background: #24cca7;
+	}
+
+	.loader-item:nth-child(5) {
+		animation-delay: -.7s;
+		background: #4956e0;
+	}
+
+	@keyframes bounce {
+		5% {
+			transform: translateY(40px);
+		}
+
+		10% {
+			transform: translateY(-40px);
+		}
+
+		15% {
+			transform: translateY(30px);
+		}
+
+		20% {
+			transform: translateY(-30px);
+		}
+
+		25% {
+			transform: translateY(20px);
+		}
+
+		30% {
+			transform: translateY(-20px);
+		}
+
+		35% {
+			transform: translateY(15px);
+		}
+
+		40% {
+			transform: translateY(-15px);
+		}
+
+		45% {
+			transform: translateY(10px);
+		}
+
+		50% {
+			transform: translateY(-10px);
+		}
+
+		55% {
+			transform: translateY(8px);
+		}
+
+		60% {
+			transform: translateY(-8px);
+		}
+
+		65% {
+			transform: translateY(6px);
+		}
+
+		70% {
+			transform: translateY(-6px);
+		}
+
+		80% {
+			transform: translateY(4px);
+		}
+
+		90% {
+			transform: translateY(-4px);
+		}
+
+		100% {
+			transform: translateY(0);
+		}
+	}
+
+	::selection {
+		background-color: rgb(190, 159, 225);
+	}
+
+	:root {
+		--color-bg1: rgb(108, 0, 162);
+		--color-bg2: rgb(0, 17, 82);
+		--color1: 190, 159, 225;
+		--color2: 190, 173, 250;
+		--color3: 225, 204, 236;
+		--color4: 223, 204, 251;
+		--color5: 201, 182, 228;
+		--color-interactive: 241, 241, 246;
+		--circle-size: 80%;
+		--blending: hard-light;
+	}
+
+	/* ---- Bakcground Animaition ---- */
+
+	#gradient-bg {
+		width: 100%;
+		height: 100%;
+		position: relative;
+		overflow: hidden;
+		background-color: #000;
+		top: 0;
+		left: 0;
+	}
+
+	svg {
+		display: none;
+	}
+
+	.gradients-container {
+		filter: url(#goo) blur(40px);
+		width: 100%;
+		height: 100%;
+	}
+
+	.gradient1 {
+		position: absolute;
+		background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
+		mix-blend-mode: var(--blending);
+		width: var(--circle-size);
+		height: var(--circle-size);
+		top: calc(50% - var(--circle-size) / 2);
+		left: calc(50% - var(--circle-size) / 2);
+		transform-origin: calc(50% - 200px);
+		animation: moveInCircle 30s ease infinite;
+		opacity: 1;
+	}
+
+	.gradient2 {
+		position: absolute;
+		background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
+		mix-blend-mode: var(--blending);
+		width: var(--circle-size);
+		height: var(--circle-size);
+		top: calc(50% - var(--circle-size) / 2);
+		left: calc(50% - var(--circle-size) / 2);
+		transform-origin: calc(50% - 400px);
+		animation: moveHorizontal 30s infinite;
+		opacity: 1;
+	}
+
+	.gradient3 {
+		position: absolute;
+		background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
+		mix-blend-mode: var(--blending);
+		width: var(--circle-size);
+		height: var(--circle-size);
+		top: calc(50% - var(--circle-size) / 2 + 200px);
+		left: calc(50% - var(--circle-size) / 2 - 500px);
+		transform-origin: calc(50% + 400px);
+		animation: moveInCircle 90s linear infinite;
+		opacity: 1;
+	}
+
+	.gradient4 {
+		position: absolute;
+		background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+		mix-blend-mode: var(--blending);
+		width: var(--circle-size);
+		height: var(--circle-size);
+		top: calc(50% - var(--circle-size) / 2);
+		left: calc(50% - var(--circle-size) / 2);
+		transform-origin: calc(50% - 200px);
+		animation: moveHorizontal 90s ease infinite;
+		opacity: 0.7;
+	}
+
+	.gradient5 {
+		position: absolute;
+		background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
+		mix-blend-mode: var(--blending);
+		width: calc(var(--circle-size));
+		height: calc(var(--circle-size)*2);
+		top: calc(50% - var(--circle-size));
+		left: calc(150% - var(--circle-size));
+		transform-origin: calc(50% - 800px) calc(50% + 200px);
+		animation: moveVertical 50s reverse infinite;
+		opacity: 1;
+	}
+
+	@keyframes moveInCircle {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		50% {
+			transform: rotate(180deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes moveVertical {
+		0% {
+			transform: translateY(-50%);
+		}
+
+		50% {
+			transform: translateY(50%);
+		}
+
+		100% {
+			transform: translateY(-50%);
+		}
+	}
+
+	@keyframes moveHorizontal {
+		0% {
+			transform: translateX(-50%) translateY(-10%);
+		}
+
+		50% {
+			transform: translateX(50%) translateY(10%);
+		}
+
+		100% {
+			transform: translateX(-50%) translateY(-10%);
+		}
+	}
+
+	/* --------- Form ----------- */
+
+	#registration-form {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 400px;
+		height: 500px;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border-radius: 20px;
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+		overflow: hidden;
+		padding: 20px;
+	}
+
+	/* -----  Form content  ------ */
+	.title {
+		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+		font-weight: 800;
+		font-size: 40pt;
+	}
+
+	.msg {
+		margin: 10px;
+	}
+
+	input {
+		background-color: transparent;
+		border: none;
+		height: 30px;
+		width: 90%;
+		border-bottom: solid 2px #fff;
+		margin: 10px;
+		font-size: 16px;
+		color: #fff;
+	}
+
+	a {
+		color: rgb(190, 173, 250);
+		text-decoration: none;
+		font-weight: 800;
+	}
+
+	.label {
+		margin-top: 20px;
+	}
+
+	.submit {
+		margin-top: 70px;
+		color: #fff;
+		height: 40px;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border-radius: 5px;
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+		cursor: pointer;
+		transition: all 0.3s ease-in-out;
+		width: 400px;
+	}
+
+	input:focus {
+		border-bottom: 2px solid #fff;
+		outline: none;
+		font-size: 16px;
+		color: #fff;
+	}
+
+	.submit:hover {
+		background-color: rgb(255, 255, 255);
+		color: #000;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+</style>

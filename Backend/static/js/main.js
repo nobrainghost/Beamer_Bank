@@ -22,15 +22,20 @@ function mySubmitFunction(e) {
     }
     if (depositData.receiver_account_number.length < 10) {
         alert('Receiver Account Number must be 10 digits')
+        document.getElementById('loader').style.display = 'none';
         return;
         
     }
     if (depositData.amount < 1) {
         alert('Amount must be greater than 0')
+        document.getElementById('loader').style.display = 'none';
+
         return;
     }
     if (depositData.amount == '') {
         alert('Amount must be greater than 0')
+        document.getElementById('loader').style.display = 'none';
+
         return;
     }
     if (depositData.receiver_account_number.length>=10 && depositData.amount >= 1) {

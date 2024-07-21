@@ -1,5 +1,9 @@
 {%load static%}
 <!-- Background -->
+ <head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ </head>
 <div id="gradient-bg">
 	<div class="gradient-container">
 		<div class="gradient1"></div>
@@ -22,13 +26,14 @@
 <!-- Form -->
 <form id="form-container" onsubmit="showloader(event)">
 	<div>
+		<p class="on-error-message" id="signin-error-message">Hello an error occured</p>
 		<h1 class="title"><img src="{% static 'img/images/logo.webp' %}" alt="logo"><span>Beamer Bank</span></h1>
 		<div class="label">Email</div>
 		<input type="text" id="email" required="true"/>
 		<div class="label">Password</div>
 		<input type="password" id="password" required="true"/>
 		<button type="submit" class="submit">Sign in</button>
-		<div class="label msg">◆ You don't have an account? <a href="#">Sign up</a></div>
+		<div class="label msg">◆ You don't have an account? <a href="/signup">Sign up</a></div>
 	</div>
 </form>
 
@@ -54,7 +59,18 @@
 			},
 			body: JSON.stringify(formData)
 		})
-			.then(response => response.json())
+			.then(response => {
+				// Check if the response is not OK
+				if (!response.ok) {
+					// Extract error message from response
+					return response.json().then(errorData => {
+						// Throw an error with the message from the response
+						const errorMessage = errorData.message || 'No User With Such details';
+						throw new Error(errorMessage);
+					});
+				}
+				return response.json();
+			})
 			.then(data => {
 				// Store JWT token in localStorage
 				localStorage.setItem("jwt", data.jwt);
@@ -63,12 +79,16 @@
 				window.location.href = '/home';  // Adjust URL as needed
 			})
 			.catch(error => {
-				document.getElementById('message').innerHTML = '<p>Error: ' + error.message + '</p>';
+				document.getElementById('signin-error-message').style.display = 'flex';
+				document.getElementById('signin-error-message').innerHTML = '<p>Error: ' + error.message + '</p>';
 			})
 			.finally(() => {
 				// Hide the loader
 				document.getElementById('loader').style.display = 'none';
 			});
+
+
+
 	}
 </script>
 <style>
@@ -99,6 +119,14 @@
 		display: none;
 		/* Hidden by default */
 	}
+
+.on-error-message{
+	color:red;
+	display: none;
+	text-align: center;
+	justify-content: center;
+
+}
 
 .loader-item {
 		width: 25px;

@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 
 def index(request):
-    return render(request, 'signup.html')
+    return render(request, 'signin.html')
 
 def signin(request):
     return render(request, 'signin.html')

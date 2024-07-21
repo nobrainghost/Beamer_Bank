@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beamer Bank Dashboard</title>
 
-    <meta name="title" content="manage your finance with us">
+    <meta name="title" content="">
     <meta name="description"
-        content="Finpay finance dashboard. all in one. manage everything using over superfast web app">
+        content="">
     <meta name="keywords" content="Finpay,finance,dashboards,finance website">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -622,17 +622,21 @@
                 console.log(depositData);
                 if (depositData.amount > 10000000) {
                     alert('Amount should be less than 10M');
+                    document.getElementById('self-deposit-amount').value = ''; 
+
 
                     return;
                 }
                 console.log(depositData.amount);
                 if (depositData.amount < 0) {
                     alert('Amount should be greater than 0');
+                    document.getElementById('self-deposit-amount').value = ''; 
                     return;
                 }
                 if (depositData.amount == '') {
                     showAlert('Please enter an amount', true);
                     alert('Please enter an amount');
+                    document.getElementById('self-deposit-amount').value = ''; 
                 }
                 if (depositData.amount>0 && depositData.amount<10000000){
                     document.getElementById('loader').style.display = 'flex';
